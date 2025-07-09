@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cervial Cancer Detection</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="jp.js"></script>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+   
+
+</head>
+
+<!--<body style="background-image: url('static/leaf.jpeg');">-->
+  <body>
+    <nav class="nav">
+      <div class="container">
+          <div class="logo">
+              <a href="index.html">Cervical Cancer Detection Using Python</a>
+          </div>
+          <div id="mainListDiv" class="main_list">
+              <ul class="navlinks">
+                  <li><a href="#">About Project</a></li>
+                  <li><a href="#">Our Team</a></li>
+                  <li><a href="#">How to run this project</a></li>
+                  <li><a href="https://skit.org.in/">Visit Our College</a></li>
+              </ul>
+          </div>
+          <span class="navTrigger">
+              <i></i>
+              <i></i>
+              <i></i>
+          </span>
+      </div>
+  </nav>
+  
+  <section class="home">
+  </section>
+  <div style="height: 1000px">
+   
+  </div>
+
+
+ <!-- Jquery needed -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+ <script src="js/scripts.js"></script>
+
+
+
+
+
+
+
+
+
+
+  <!-- <center> -->
+  <h1 style="padding-top: 50px; text-align: center;">CERVICAL CANCER DISEASE DETECTION</h1>
+  <div class="row">
+    <div class="column">
+      <h3>Select Image</h3>
+        <form action="{{url_for('image')}}" method="POST" style="display: flex;">          
+          <input type="file" id="file" name="filename" required>
+          <input type="submit" value="Analyse">
+        </form>
+    </div>
+    <div class="column">
+      <h3>Original</h3>
+      {% if (ImageDisplay) %}
+      <img src="{{ImageDisplay}}" width="100%">
+      {% endif %}
+    </div>
+     <div class="column">
+      <h3>GRAY</h3>
+      {% if (ImageDisplay1) %}
+      <img src="{{ImageDisplay1}}" width="100%">
+      {% endif %}
+    </div>
+    </div>
+    <div class="row">
+    <div class="column">
+      <h3>Segmentation</h3>
+      {% if (ImageDisplay2) %}
+      <img src="{{ImageDisplay2}}" width="100%">
+      {% endif %}
+    </div> 
+
+    <div class="column">
+      <h3>Answer</h3>
+      {% if (status) %}
+          {% if status == "Healthy" %}
+              <p><b>Status: </b>Healthy</p>
+              <p><b>Accuracy:</b>{{accuracy}}</p>
+
+          {% else %}
+              <p><b>Status: </b>{{status}}</p>
+              <p><b>Accuracy:</b>{{accuracy}}</p>
+              <p><b>Suggestions:</b>{{display}}</p>
+               <p><b>Disease Name: </b>{{disease}}</p>
+              <p><b>{{remedie}}</b></p>
+              {% for remedie in remedie1 %}
+                <ul>
+                  <li>{{remedie}}</li>
+                </ul>
+              {% endfor %}
+          {% endif %}
+        {% endif %}
+
+  {% if result%}
+	{{result}}
+	{% endif %} 
+    </div>
+  </div>
+ </center> 
+ <button onclick="goBack()">Go Back</button>
+
+
+ <div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="our-team">
+        <div class="picture">
+          <img class="img-fluid" src="j1.jpeg">
+        </div>
+        <div class="team-content">
+          <h3 class="name">Jyotika Priyadarshy</h3>
+          <h4 class="title">Topper</h4>
+        </div>
+        <ul class="social">
+          <li><a href="https://www.facebook.com/campaign/landing.php?campaign_id=14884913640&extra_1=s%7Cc%7C550525804791%7Ce%7Cfacebook%7C&placement=&creative=550525804791&keyword=facebook&partner_id=googlesem&extra_2=campaignid%3D14884913640%26adgroupid%3D128696220912%26matchtype%3De%26network%3Dg%26source%3Dnotmobile%26search_or_content%3Ds%26device%3Dc%26devicemodel%3D%26adposition%3D%26target%3D%26targetid%3Dkwd-1001394929%26loc_physical_ms%3D9062066%26loc_interest_ms%3D%26feeditemid%3D%26param1%3D%26param2%3D&gclid=CjwKCAjw2vOLBhBPEiwAjEeK9ptsEtG84rBYZCD1X4zPUdHjNSEotQrapj8XD_ylTJWOFrQAEK0C6xoCwr4QAvD_BwE" class="fa fa-facebook" aria-hidden="true"></a></li>
+          <li><a href="#" class="fa fa-twitter" aria-hidden="true"></a></li>
+          <li><a href="#" class="fa fa-google-plus" aria-hidden="true"></a></li>
+          <li><a href="#" class="fa fa-linkedin" aria-hidden="true"></a></li>
+         
+        </ul>
+      </div>
+    </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="our-team">
+        <div class="picture">
+          <img class="img-fluid" src="j2.jpeg">
+        </div>
+        <div class="team-content">
+          <h3 class="name">Muskan Kumari</h3>
+          <h4 class="title">I Dont'know</h4>
+        </div>
+        <ul class="social">
+          <li><a href="#" class="fa fa-facebook" aria-hidden="true"></a></li>
+          <li><a href="#" class="fa fa-twitter" aria-hidden="true"></a></li>
+          <li><a href="#" class="fa fa-google-plus" aria-hidden="true"></a></li>
+          <li><a href="#" class="fa fa-linkedin" aria-hidden="true"></a></li>
+        </ul>
+      </div>
+    </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="our-team">
+        <div class="picture">
+          <img class="img-fluid" src="j3.jpeg">
+        </div>
+        <div class="team-content">
+          <h3 class="name">Anjali Arora</h3>
+          <h4 class="title">Putin ki sister</h4>
+        </div>
+        <ul class="social">
+          <li><a href="#" class="fa fa-facebook" aria-hidden="true"></a></li>
+          <li><a href="#" class="fa fa-twitter" aria-hidden="true"></a></li>
+          <li><a href="#" class="fa fa-google-plus" aria-hidden="true"></a></li>
+          <li><a href="#" class="fa fa-linkedin" aria-hidden="true"></a></li>
+        </ul>
+      </div>
+    </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="our-team">
+        <div class="picture">
+          <img class="img-fluid" src="j4.jpeg">
+        </div>
+        <div class="team-content">
+          <h3 class="name">Akshay anand</h3>
+          <h4 class="title">Script Writer</h4>
+        </div>
+        <ul class="social">
+          <li><a href="#" class="fa fa-facebook" aria-hidden="true"></a></li>
+          <li><a href="#" class="fa fa-twitter" aria-hidden="true"></a></li>
+          <li><a href="#" class="fa fa-google-plus" aria-hidden="true"></a></li>
+          <li><a href="#" class="fa fa-linkedin" aria-hidden="true"></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+</body>
+</html>
